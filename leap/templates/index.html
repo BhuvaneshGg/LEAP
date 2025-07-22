@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-100 text-gray-900">
+<head>
+  <meta charset="UTF-8">
+  <title>ESP32 Health Monitor</title>
+  <script>
+    async function fetchData() {
+      const res = await fetch("/api/data");
+      const data = await res.json();
+      document.getElementById("temp").innerText = data.temperature + " °C";
+      document.getElementById("hr").innerText = data.heart_rate + " bpm";
+    }
+    setInterval(fetchData, 3000); // Update every 3 seconds
+    window.onload = fetchData;
+  </script>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 2rem; }
+    .card {
+      background: white;
+      padding: 2rem;
+      margin: 1rem auto;
+      max-width: 300px;
+      border-radius: 1rem;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+    h2 { font-size: 1.2rem; color: #666; }
+    .value { font-size: 2rem; font-weight: bold; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>🌡️ ESP32 Health Monitor</h1>
+  <div class="card">
+    <h2>Body temperature</h2>
+    <div id="temp" class="value">-- °C</div>
+  </div>
+  <div class="card">
+    <h2>Heart Rate</h2>
+    <div id="hr" class="value">-- bpm</div>
+  </div>
+</body>
+</html>
