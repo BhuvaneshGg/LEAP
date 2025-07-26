@@ -4,8 +4,8 @@
 #include <WebServer.h>
 
 // ==== WiFi Config ==== //
-const char* ssid = "Moto";
-const char* password = "cocomelon";
+const char* ssid = "Moto"; //<-- your wifi name
+const char* password = "cocomelon"; //<-- your wifi password
 
 // ==== Sensor Pins ==== //
 #define ONE_WIRE_BUS 21     // DS18B20
